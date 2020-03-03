@@ -1,26 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// import { Container } from './styles';
+import Status from 'pages/status';
+import Calls from 'pages/calls';
+import Camera from 'pages/camera';
+import Chats from 'pages/chats';
+import Settings from 'pages/settings';
 
-export default function Main() {
+const Tab = createBottomTabNavigator();
+
+function TabStack() {
   return (
-    <View style={styles.main}>
-      <Text style={styles.text} children="WhatsApp Clone" />
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Status" component={Status} />
+      <Tab.Screen name="Calls" component={Calls} />
+      <Tab.Screen name="Camera" component={Camera} />
+      <Tab.Screen name="Chats" component={Chats} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  main: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: '#25D366',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 32,
-    fontWeight: 'bold',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <TabStack />
+    </NavigationContainer>
+  );
+}
