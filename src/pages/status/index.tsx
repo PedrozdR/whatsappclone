@@ -1,11 +1,26 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Container } from 'utils/generics';
+import { Container, Topic } from 'utils/generics';
+import { Field, Status } from './styles';
+import { Text } from 'react-native';
 
 export default function() {
+  function renderHeader() {
+    return (
+      <>
+        <Topic children="Status" />
+        <Field.Container>
+          <Field.Icon name="search" />
+          <Field.Input placeholder="Buscar" />
+        </Field.Container>
+      </>
+    );
+  }
+
   return (
-    <Container>
-      <Text children="Status" />
-    </Container>
+    <Status.List
+      data={['', '', '']}
+      ListHeaderComponent={renderHeader}
+      renderItem={() => <Text children="Troll" />}
+    />
   );
 }
