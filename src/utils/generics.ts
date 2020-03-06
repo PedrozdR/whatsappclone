@@ -14,4 +14,5 @@ export const Container = styled.ScrollView.attrs(() => ({
 export const Topic = styled.Text`
   font-size: 32px;
   color: ${colors.text};
+  font-weight: bold;
 `;
