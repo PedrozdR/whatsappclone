@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Topic } from 'utils/generics';
 import { Field, Status } from './styles';
 import { Text, View } from 'react-native';
 
 export default function() {
+  const data = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+
   function renderHeader() {
     return (
       <>
@@ -14,7 +16,7 @@ export default function() {
             <Field.Input placeholder="Buscar" />
           </Field.Container>
         </Status.Header>
-        <Status.Container>
+        <Status.Container style={{ marginBottom: 32 }}>
           <Status.Avatar source={{ uri: 'https://picsum.photos/1920/1080' }} />
           <Status.Content>
             <Status.Title children="Meus Status" />
@@ -30,6 +32,20 @@ export default function() {
             </Status.Action>
           </Status.Actions>
         </Status.Container>
+        <Status.Text children="ATUALIZAÇÕES RECENTES" />
+        {data.map(e => (
+          <Status.Container>
+            <Status.Avatar
+              source={{
+                uri: `https://picsum.photos/1920/1080/?random=${e.id} `,
+              }}
+            />
+            <Status.Content>
+              <Status.Title children="Lorem Amet" />
+              <Status.Subtitle children="há 4 min" />
+            </Status.Content>
+          </Status.Container>
+        ))}
       </>
     );
   }
@@ -38,7 +54,7 @@ export default function() {
     <Status.List
       data={['', '', '']}
       ListHeaderComponent={renderHeader}
-      renderItem={() => <Text children="Troll" />}
+      renderItem={({ item, index }) => <Text key={index} children="" />}
     />
   );
 }

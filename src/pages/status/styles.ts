@@ -56,6 +56,13 @@ export const Status = {
     color: colors.secondary,
     size: 18,
   }))``,
+  Text: styled.Text`
+    padding-left: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: ${colors.lightText};
+    margin-bottom: 8px;
+  `,
 };
 
 export const Field = {
